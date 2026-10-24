@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-WOBQ89dEXD/zgpCbeDQbBpbpL9jNnc9H+TS4iHcE82g='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: https://kgphnxetehgtlrjyvhmg.supabase.co; connect-src 'self' https://kgphnxetehgtlrjyvhmg.supabase.co wss://kgphnxetehgtlrjyvhmg.supabase.co https://api.pwnedpasswords.com; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-SM7bgcQtMI3E3uCVw9KImbW72VsvkBSKnfTm6LfNnzQ='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: https://kgphnxetehgtlrjyvhmg.supabase.co; connect-src 'self' https://kgphnxetehgtlrjyvhmg.supabase.co wss://kgphnxetehgtlrjyvhmg.supabase.co https://api.pwnedpasswords.com; object-src 'none'; base-uri 'self'">
 <title>LA VOZ — Movimiento de oratoria y liderazgo | Nadie se forja solo</title>
 <meta name="description" content="Movimiento de oratoria y liderazgo para jóvenes: células de hasta 12 que entrenan palabra, ejemplo y cuerpo. Sesiones semanales gratuitas. Nadie se forja solo.">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -124,6 +124,14 @@
     *,*::before,*::after{animation-duration:.01ms !important;
       animation-iteration-count:1 !important;transition-duration:.01ms !important}
   }
+
+  .aviso-cuenta{display:none;border-bottom:1px solid var(--line);padding:16px 24px}
+  .aviso-cuenta.visible{display:block}
+  .aviso-cuenta.ok{background:#0F1F0D;box-shadow:inset 4px 0 0 #4CAF50}
+  .aviso-cuenta.error{background:#260F0C;box-shadow:inset 4px 0 0 var(--red)}
+  .aviso-cuenta .caja{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .aviso-cuenta p{font-size:1rem;color:var(--white);flex:1;min-width:240px}
+  .aviso-cuenta .btn,.aviso-cuenta .btn-copy{font-size:1rem;padding:8px 16px}
 </style>
 </head>
 <body>
@@ -136,6 +144,15 @@
   </div>
   <a class="btn-ingresar" href="ingresar.html">Ingresar</a>
 </nav>
+<div class="aviso-cuenta" id="aviso-cuenta" role="status">
+  <div class="caja">
+    <p id="aviso-cuenta-texto"></p>
+    <a class="btn" id="aviso-cuenta-panel" href="panel.html">Ir a mi panel</a>
+    <a class="btn-copy" id="aviso-cuenta-ingresar" href="ingresar.html">Ingresar</a>
+    <button class="btn-copy" id="aviso-cuenta-cerrar" type="button">Cerrar</button>
+  </div>
+</div>
+
 
 <header class="hero">
   <div>
@@ -383,6 +400,57 @@ try {
   );
   sbv.from("page_views").insert({ path: location.pathname }).then(function () {}, function () {});
 } catch (e) {}
+
+/* Aviso de confirmación de cuenta: Supabase redirige a la página principal
+   tras verificar el correo (#type=signup con la sesión en el fragmento, o
+   #error=... si el enlace venció). Sin esto, la persona aterrizaba en la
+   home sin ningún aviso de que su cuenta quedó confirmada. */
+(function () {
+  var hash = window.location.hash || "";
+  if (hash.indexOf("type=signup") === -1 && hash.indexOf("error") === -1) return;
+  var params = {};
+  hash.replace(/^#/, "").split("&").forEach(function (par) {
+    var i = par.indexOf("=");
+    if (i > 0) {
+      try {
+        params[decodeURIComponent(par.slice(0, i))] = decodeURIComponent(par.slice(i + 1));
+      } catch (e) {}
+    }
+  });
+  var caja = document.getElementById("aviso-cuenta");
+  var texto = document.getElementById("aviso-cuenta-texto");
+  if (!caja || !texto) return;
+  var bPanel = document.getElementById("aviso-cuenta-panel");
+  var bIngresar = document.getElementById("aviso-cuenta-ingresar");
+  var bCerrar = document.getElementById("aviso-cuenta-cerrar");
+  if (params.error || params.error_code) {
+    caja.classList.add("error", "visible");
+    texto.textContent = "Ese enlace de confirmación venció o ya fue usado. Ingresá con tu correo y tu contraseña: si tu cuenta todavía no está confirmada, desde ahí podés pedir un enlace nuevo.";
+    if (bPanel) bPanel.style.display = "none";
+  } else {
+    caja.classList.add("ok", "visible");
+    texto.textContent = "¡Tu cuenta quedó confirmada! Ya sos parte de LA VOZ: tu sesión quedó iniciada y en tu panel está tu carnet de Aspirante con tu número LVZ.";
+    if (bIngresar) bIngresar.style.display = "none";
+    /* La sesión del enlace se guarda con el cliente real (mismo proyecto y
+       misma clave de almacenamiento que usan ingresar y el panel), para
+       que el panel la reconozca al entrar. */
+    try {
+      if (window.supabase && params.access_token && params.refresh_token) {
+        var sbc = window.supabase.createClient(
+          "https://kgphnxetehgtlrjyvhmg.supabase.co",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtncGhueGV0ZWhndGxyanl2aG1nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3NjcwNDYsImV4cCI6MjEwNzM0MzA0Nn0.DvYJ2m0UJvyZGMaS0JhXnQMcWy2Trm6Hfq-hsmYrK6g"
+        );
+        sbc.auth.setSession({
+          access_token: params.access_token,
+          refresh_token: params.refresh_token
+        });
+      }
+    } catch (e) {}
+  }
+  if (bCerrar) bCerrar.addEventListener("click", function () { caja.classList.remove("visible"); });
+  try { history.replaceState(null, "", window.location.pathname + window.location.search); } catch (e) {}
+  window.scrollTo(0, 0);
+})();
 </script>
 </body>
 </html>
