@@ -155,6 +155,15 @@
   #pilares .pillars .card[data-num="I"]{margin-top:80px}
   #pilares .pillars .card[data-num="II"]{margin-top:40px}
   #pilares .pillars .card[data-num="III"]{margin-top:0}
+  .num-chip{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border:1.5px solid var(--red);border-radius:50%;color:var(--red);font-family:Georgia,serif;font-size:1rem;margin-right:12px}
+  details.acordeon summary{display:flex;align-items:flex-start}
+  details.acordeon summary .sum-txt{flex:1}
+  #equipo details summary{display:flex;align-items:flex-start}
+  #equipo .sum-txt{flex:1}
+  #pilares .pillars .card::before{font-family:Georgia,serif;font-weight:400}
+  #camino .paso-num{font-family:Georgia,serif;font-weight:400;border-width:1.5px}
+  .nivel .dot{font-family:Georgia,serif;font-weight:400;border-width:1.5px}
+  .faq summary .qnum{display:inline-flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px;border:1.5px solid var(--red);border-radius:50%;color:var(--red);font-family:Georgia,serif;font-weight:400;font-size:.9rem;margin-right:12px}
   @media (hover:hover) and (pointer:fine){
     nav .links a:hover{color:var(--red)}
     .btn:hover{background:#c93327}
@@ -367,10 +376,10 @@
     <p class="kicker">IV · ABRIR UNA CÉLULA</p>
       <h2>ABRÍ TU CÉLULA: EN 4 PASOS</h2>
     <p class="sub">Donde haya un miembro dispuesto, nace una célula. Si en tu ciudad, tu localidad o tu país todavía no hay una, podés ser vos quien la funde — en 4 pasos, con acompañamiento directo del Fundador:</p>
-    <details class="acordeon"><summary>1 &mdash; CONOCÉ EL MOVIMIENTO<span class="tag">Los pilares, el camino, el equipo: recorré esta página.</span></summary><div class="cuerpo"><p>Recorré esta página: los pilares, el camino, el equipo. Si esto te llama, es para vos.</p></div></details>
-    <details class="acordeon"><summary>2 &mdash; CREÁ TU CUENTA<span class="tag">Quedás como Aspirante, con los documentos de arranque.</span></summary><div class="cuerpo"><p>Registrate en el área de miembros: quedás como Aspirante y se te abren los documentos de arranque para formarte desde el día uno.</p></div></details>
-    <details class="acordeon"><summary>3 &mdash; PRESENTÁ TU SOLICITUD<span class="tag">Tu ciudad, tu lugar, tus primeros nombres y tu por qué.</span></summary><div class="cuerpo"><p>Desde tu panel de miembro, contanos dónde: tu ciudad, el lugar donde se reunirían, cuántos miembros ya tenés en vista y tu por qué. Sin solicitud no hay célula: así, cada célula nace en serio.</p></div></details>
-    <details class="acordeon"><summary>4 &mdash; ENTREVISTA Y DESBLOQUEO<span class="tag">Videollamada con el Fundador; si te designa, kit completo.</span></summary><div class="cuerpo"><p>El Fundador lee tu solicitud y te entrevista por videollamada. Si te designa, firmás el Acta, quedás Guía fundador y se te desbloquea el kit completo de fundación. Tu primera sesión, acompañada por videollamada.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">1</span><span class="sum-txt">CONOCÉ EL MOVIMIENTO<span class="tag">Los pilares, el camino, el equipo: recorré esta página.</span></span></summary><div class="cuerpo"><p>Recorré esta página: los pilares, el camino, el equipo. Si esto te llama, es para vos.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">2</span><span class="sum-txt">CREÁ TU CUENTA<span class="tag">Quedás como Aspirante, con los documentos de arranque.</span></span></summary><div class="cuerpo"><p>Registrate en el área de miembros: quedás como Aspirante y se te abren los documentos de arranque para formarte desde el día uno.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">3</span><span class="sum-txt">PRESENTÁ TU SOLICITUD<span class="tag">Tu ciudad, tu lugar, tus primeros nombres y tu por qué.</span></span></summary><div class="cuerpo"><p>Desde tu panel de miembro, contanos dónde: tu ciudad, el lugar donde se reunirían, cuántos miembros ya tenés en vista y tu por qué. Sin solicitud no hay célula: así, cada célula nace en serio.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">4</span><span class="sum-txt">ENTREVISTA Y DESBLOQUEO<span class="tag">Videollamada con el Fundador; si te designa, kit completo.</span></span></summary><div class="cuerpo"><p>El Fundador lee tu solicitud y te entrevista por videollamada. Si te designa, firmás el Acta, quedás Guía fundador y se te desbloquea el kit completo de fundación. Tu primera sesión, acompañada por videollamada.</p></div></details>
     <div class="acciones">
       <a class="btn" href="ingresar.html?tab=registro">Crear mi cuenta</a>
       <a class="enlace" href="https://wa.me/59891311418?text=Hola%2C%20quiero%20abrir%20una%20c%C3%A9lula%20de%20LA%20VOZ">o escribinos por WhatsApp</a>
@@ -384,7 +393,7 @@
       <h2>FORMÁ PARTE DEL EQUIPO</h2>
     <p class="sub">LA VOZ crece con gente como vos. Tocá cada rol para ver qué implica.</p>
     <details>
-      <summary>PROMOTOR / EMBAJADOR<span class="tag">Difundí el proyecto e invitá jóvenes — cada uno trae uno</span></summary>
+      <summary><span class="num-chip">I</span><span class="sum-txt">PROMOTOR / EMBAJADOR<span class="tag">Difundí el proyecto e invitá jóvenes — cada uno trae uno</span></span></summary>
       <div class="role-body">
         <p><strong>Qué vas a hacer:</strong> compartir el proyecto en tus círculos, circular el volante con QR e invitar jóvenes a los talleres gratuitos.</p>
         <p><strong>Dedicación:</strong> 2 a 4 horas por semana, a tu ritmo, sin horarios fijos.</p>
@@ -392,7 +401,7 @@
       </div>
     </details>
     <details>
-      <summary>GESTOR DE REDES SOCIALES<span class="tag">Creá y publicá contenido — sin mostrar la cara</span></summary>
+      <summary><span class="num-chip">II</span><span class="sum-txt">GESTOR DE REDES SOCIALES<span class="tag">Creá y publicá contenido — sin mostrar la cara</span></span></summary>
       <div class="role-body">
         <p><strong>Qué vas a hacer:</strong> crear y publicar contenido para TikTok, Instagram y Facebook con plantillas y guiones ya listos.</p>
         <p><strong>Dedicación:</strong> 3 a 5 horas por semana, a tu ritmo.</p>
@@ -400,7 +409,7 @@
       </div>
     </details>
     <details>
-      <summary>COORDINADOR DE CÉLULA<span class="tag">Organizá las sesiones semanales — el paso previo a ser Guía</span></summary>
+      <summary><span class="num-chip">III</span><span class="sum-txt">COORDINADOR DE CÉLULA<span class="tag">Organizá las sesiones semanales — el paso previo a ser Guía</span></span></summary>
       <div class="role-body">
         <p><strong>Qué vas a hacer:</strong> coordinar la logística de las sesiones semanales de tu célula: lugar, horarios, asistencia y bienvenida de nuevos.</p>
         <p><strong>Dedicación:</strong> 3 a 4 horas por semana.</p>
@@ -417,9 +426,9 @@
     <p class="kicker">VI · EL TALLER</p>
       <h2>TU VOZ TIENE PODER</h2>
     <p class="sub">El primer taller es <strong>gratuito y sin compromiso</strong>. Vení, probá una sesión, conocé al movimiento. Si te hace sentido, te quedás.</p>
-    <details class="acordeon"><summary>HABLAR EN PÚBLICO<span class="tag">Presentaciones, debates e improvisación cada semana, con feedback real.</span></summary><div class="cuerpo"><p>Presentaciones, debates e improvisación cada semana, con feedback real: entrenás hasta hablar frente a un grupo con seguridad.</p></div></details>
-    <details class="acordeon"><summary>LIDERAR CON EL EJEMPLO<span class="tag">Coordinás sesiones y acompañás a los nuevos desde adentro.</span></summary><div class="cuerpo"><p>Coordinás sesiones y acompañás a los nuevos desde adentro: el liderazgo se practica, no se estudia solo.</p></div></details>
-    <details class="acordeon"><summary>CUERPO FUERTE<span class="tag">Entrenamiento físico en grupo, junto a tu célula.</span></summary><div class="cuerpo"><p>Entrenamiento físico en grupo, junto a tu célula: disciplina, energía y presencia, cada semana.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">I</span><span class="sum-txt">HABLAR EN PÚBLICO<span class="tag">Presentaciones, debates e improvisación cada semana, con feedback real.</span></span></summary><div class="cuerpo"><p>Presentaciones, debates e improvisación cada semana, con feedback real: entrenás hasta hablar frente a un grupo con seguridad.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">II</span><span class="sum-txt">LIDERAR CON EL EJEMPLO<span class="tag">Coordinás sesiones y acompañás a los nuevos desde adentro.</span></span></summary><div class="cuerpo"><p>Coordinás sesiones y acompañás a los nuevos desde adentro: el liderazgo se practica, no se estudia solo.</p></div></details>
+    <details class="acordeon"><summary><span class="num-chip">III</span><span class="sum-txt">CUERPO FUERTE<span class="tag">Entrenamiento físico en grupo, junto a tu célula.</span></span></summary><div class="cuerpo"><p>Entrenamiento físico en grupo, junto a tu célula: disciplina, energía y presencia, cada semana.</p></div></details>
     <div style="text-align:center;margin-top:32px"><a class="enlace" href="https://docs.google.com/forms/d/e/1FAIpQLSfgUKeSpKuz0npDXgJAOf-cOfyzeiMaubLZ_nwHy2I2EFGEtA/viewform">Completar inscripción al taller</a></div>
   </div>
 </section>
