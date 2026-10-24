@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-WBkeTapOq1Md+6pdxbFlHlL4137FCe0Njp3+hkGdpZo=' 'sha256-6/2lmuXgnS1odIPjUfiXtberVFqaaA95JNC/V5mzNcI='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: https://kgphnxetehgtlrjyvhmg.supabase.co; connect-src 'self' https://kgphnxetehgtlrjyvhmg.supabase.co wss://kgphnxetehgtlrjyvhmg.supabase.co https://api.pwnedpasswords.com; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com 'sha256-FYie2o7Zh8TzOKm/XX5cI9tvmGwWTBOzXrBQFpWJBHQ=' 'sha256-6/2lmuXgnS1odIPjUfiXtberVFqaaA95JNC/V5mzNcI='; frame-src https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: https://kgphnxetehgtlrjyvhmg.supabase.co; connect-src 'self' https://kgphnxetehgtlrjyvhmg.supabase.co wss://kgphnxetehgtlrjyvhmg.supabase.co https://api.pwnedpasswords.com; object-src 'none'; base-uri 'self'">
 <title>Ingresar — LA VOZ</title>
 <link rel="canonical" href="https://lavoz-movimiento.github.io/ingresar.html">
 <link rel="icon" href="img/favicon.ico" sizes="any">
@@ -11,6 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="estilos.css?v=20261014-auditoria">
 <script src="supabase-js.min.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTsCargado" async defer></script>
 <script src="config.js"></script>
 </head>
 <body>
@@ -406,14 +407,14 @@ document.getElementById("form-login").addEventListener("submit", async (e) => {
    Paso 2: el enlace vuelve a esta misma página con ?modo=recuperar y una
    sesión de recuperación; ahí se muestra el formulario de contraseña
    nueva (ver mostrarNuevaPass y el evento PASSWORD_RECOVERY arriba). */
-/* Captcha anti-bots (Cloudflare Turnstile): DESACTIVADO por orden del
+/* Captcha anti-bots (Cloudflare Turnstile): ACTIVADO 2026-10-23 por orden del Fundador.
    Fundador (2026-10-12) — no hay cuenta de Cloudflare. El tag <script>
    externo se quitó porque la CSP lo bloqueaba (error en consola en cada
    carga). Supabase tiene el captcha en OFF. Las funciones de abajo quedan
    inertes: si algún día se reactiva, basta con poner la site key real en
    TURNSTILE_SITE_KEY, re-agregar el script de challenges.cloudflare.com
    y autorizar ese origen en la CSP. */
-const TURNSTILE_SITE_KEY = "__LAVOZ_TURNSTILE_SITE_KEY__";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAFjWKBCYE_xEpUNa";
 const tsWidgets = {};
 function onTsCargado() { renderTurnstile(); }
 function renderTurnstile() {
@@ -423,7 +424,7 @@ function renderTurnstile() {
     .forEach(([id, k]) => {
       const el = document.getElementById(id);
       if (el && tsWidgets[k] === undefined) {
-        tsWidgets[k] = turnstile.render(el, { sitekey: TURNSTILE_SITE_KEY, theme: "dark" });
+        tsWidgets[k] = turnstile.render(el, { sitekey: TURNSTILE_SITE_KEY, theme: "dark", language: "es" });
       }
     });
 }
