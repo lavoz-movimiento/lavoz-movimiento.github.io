@@ -151,6 +151,10 @@
   #donaciones .card{background:linear-gradient(180deg,#1c1c1c,#141414)}
   #soporte .acciones{gap:24px}
   @media(max-width:820px){#camino .steps3 .step:not(:last-child)::after{top:auto;bottom:-12px;left:calc(50% - 1px);right:auto;width:2px;height:24px}}
+  #pilares .pillars{align-items:start}
+  #pilares .pillars .card[data-num="I"]{margin-top:80px}
+  #pilares .pillars .card[data-num="II"]{margin-top:40px}
+  #pilares .pillars .card[data-num="III"]{margin-top:0}
   @media (hover:hover) and (pointer:fine){
     nav .links a:hover{color:var(--red)}
     .btn:hover{background:#c93327}
@@ -180,6 +184,11 @@
   .aviso-cuenta .caja{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   .aviso-cuenta p{font-size:1rem;color:var(--white);flex:1;min-width:240px}
   .aviso-cuenta .btn,.aviso-cuenta .btn-copy{font-size:1rem;padding:8px 16px}
+  @media(max-width:820px){
+    #pilares .pillars .card[data-num="I"]{margin-top:0;margin-left:0}
+    #pilares .pillars .card[data-num="II"]{margin-top:0;margin-left:24px}
+    #pilares .pillars .card[data-num="III"]{margin-top:0;margin-left:48px}
+  }
 </style>
 <script type="application/ld+json">
 {
