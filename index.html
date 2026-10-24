@@ -29,7 +29,7 @@
   html{scroll-behavior:smooth}
   body{background:var(--black);color:var(--white);font-family:'Segoe UI',Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5}
   a:focus-visible,.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:1px solid var(--red);outline-offset:2px}
-  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.94);border-bottom:1px solid #222;
+  nav{position:sticky;top:0;z-index:50;background:var(--black);border-bottom:1px solid #222;
       display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 24px}
   nav .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.14em;font-size:1.25rem}
   nav .brand img{width:38px;height:38px}
@@ -105,6 +105,27 @@
   footer p{margin:8px 0}
   footer .cry{color:var(--white);font-weight:800;letter-spacing:.12em}
   footer a{color:var(--red)}
+  section[id]{scroll-margin-top:104px}
+  @media(max-width:820px){section[id]{scroll-margin-top:118px}}
+  .niveles{position:relative;margin-top:8px;padding-left:40px}
+  .niveles::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:2px;
+      background:linear-gradient(180deg,#3A3A3A,var(--red))}
+  .nivel{position:relative;padding-bottom:32px}
+  .nivel:last-child{padding-bottom:8px}
+  .nivel .dot{position:absolute;left:-40px;top:0;width:28px;height:28px;border-radius:50%;
+      background:var(--black);border:2px solid var(--red);color:var(--white);font-weight:800;
+      font-size:.8rem;display:flex;align-items:center;justify-content:center}
+  .nivel .n-label{font-size:.8rem;letter-spacing:.14em;color:var(--gray);font-weight:700}
+  .nivel h4{font-size:1.25rem;letter-spacing:.04em;margin:4px 0 8px}
+  .nivel p{color:#CFCFCF;font-size:1rem;max-width:70ch}
+  .nivel .req{display:inline-block;margin-top:8px;font-size:.8rem;letter-spacing:.08em;font-weight:700;
+      color:var(--white);border:1px solid var(--red);border-radius:999px;padding:4px 12px}
+  details.acordeon{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:16px;padding:16px 24px}
+  details.acordeon summary{font-weight:700;cursor:pointer;font-size:1.25rem;letter-spacing:.04em}
+  details.acordeon summary::marker{color:var(--gray)}
+  details.acordeon summary .tag{display:block;font-weight:400;color:var(--gray);font-size:1rem;margin-top:8px;letter-spacing:0}
+  details.acordeon .cuerpo{padding-top:16px}
+  details.acordeon .cuerpo p{color:#CFCFCF;margin:8px 0;font-size:1rem}
   @media (hover:hover) and (pointer:fine){
     nav .links a:hover{color:var(--red)}
     .btn:hover{background:#c93327}
@@ -255,7 +276,8 @@
     <p>Que la palabra es la herramienta más poderosa que un hombre puede dominar.</p>
     <p>Que el ejemplo arrastra más que el discurso.</p>
     <p>Que el cuerpo fuerte sostiene la mente fuerte.</p>
-    <p>No competimos entre nosotros. <strong>Nos forjamos entre nosotros.</strong></p>
+    <p>No competimos entre nosotros.</p>
+    <p><strong>Nos forjamos entre nosotros.</strong></p>
     <p><strong>Nadie se forja solo.</strong></p>
   </div>
 </section>
@@ -281,12 +303,14 @@
       <div class="step"><strong>2 &mdash; CONFIRMAR EL CORREO</strong><p>Te llega un correo de LA VOZ. Tocás el enlace y tu cuenta queda activa, con tu número de miembro.</p></div>
       <div class="step"><strong>3 &mdash; PRIMERA MISIÓN EN EL PANEL</strong><p>Entrás a tu panel y tu primera misión ya está marcada como tu siguiente acción.</p></div>
     </div>
-    <h3 class="subtit">LA ESCALERA: DE ASPIRANTE A MAESTRO</h3>
+    <h3 class="subtit">NIVELES: DE ASPIRANTE A MAESTRO</h3>
     <p class="sub">Todo empieza con 12. Acá no hay seguidores eternos: el objetivo es que <strong>vos</strong> llegues a liderar.</p>
-    <div class="step"><strong>1 &mdash; ASPIRANTE</strong><p>Venís al taller gratuito. Probás. Sin compromiso.</p></div>
-    <div class="step"><strong>2 &mdash; ORADOR</strong><p>Entrenás cada semana, das tu primer discurso de 5 minutos y traés a una persona. <em>Requisito: 4 sesiones.</em></p></div>
-    <div class="step"><strong>3 &mdash; GUÍA</strong><p>Mentoreás a 3 compañeros y coordinás sesiones. <em>Requisito: 12 sesiones + 3 mentees.</em></p></div>
-    <div class="step"><strong>4 &mdash; MAESTRO</strong><p>Formás tu propia célula de 12 y forjás un nuevo guía. <em>Requisito: célula completa.</em></p></div>
+    <div class="niveles">
+      <div class="nivel"><span class="dot">1</span><div class="n-label">NIVEL 1</div><h4>ASPIRANTE</h4><p>Venís al taller gratuito. Probás. Sin compromiso.</p></div>
+      <div class="nivel"><span class="dot">2</span><div class="n-label">NIVEL 2</div><h4>ORADOR</h4><p>Entrenás cada semana, das tu primer discurso de 5 minutos y traés a una persona.</p><span class="req">REQUISITO: 4 SESIONES</span></div>
+      <div class="nivel"><span class="dot">3</span><div class="n-label">NIVEL 3</div><h4>GUÍA</h4><p>Mentoreás a 3 compañeros y coordinás sesiones.</p><span class="req">REQUISITO: 12 SESIONES + 3 MENTEES</span></div>
+      <div class="nivel"><span class="dot">4</span><div class="n-label">NIVEL 4</div><h4>MAESTRO</h4><p>Formás tu propia célula de 12 y forjás un nuevo guía.</p><span class="req">REQUISITO: CÉLULA COMPLETA</span></div>
+    </div>
     <p style="margin-top:24px">Cada guía forma su propia célula de 12. Cada célula forma nuevos líderes. <strong>12 voces se vuelven 144. 144 se vuelven miles.</strong> Cada uno trae uno.</p>
   </div>
 </section>
@@ -304,10 +328,10 @@
   <div class="wrap">
     <h2>ABRÍ TU CÉLULA: EN 4 PASOS</h2>
     <p class="sub">Donde haya un miembro dispuesto, nace una célula. Si en tu ciudad, tu localidad o tu país todavía no hay una, podés ser vos quien la funde — en 4 pasos, con acompañamiento directo del Fundador:</p>
-    <div class="step"><strong>1 &mdash; CONOCÉ EL MOVIMIENTO</strong><p>Recorré esta página: los pilares, el camino, el equipo. Si esto te llama, es para vos.</p></div>
-    <div class="step"><strong>2 &mdash; CREÁ TU CUENTA</strong><p>Registrate en el área de miembros: quedás como Aspirante y se te abren los documentos de arranque para formarte desde el día uno.</p></div>
-    <div class="step"><strong>3 &mdash; PRESENTÁ TU SOLICITUD</strong><p>Desde tu panel de miembro, contanos dónde: tu ciudad, el lugar donde se reunirían, cuántos miembros ya tenés en vista y tu por qué. Sin solicitud no hay célula: así, cada célula nace en serio.</p></div>
-    <div class="step"><strong>4 &mdash; ENTREVISTA Y DESBLOQUEO</strong><p>El Fundador lee tu solicitud y te entrevista por videollamada. Si te designa, firmás el Acta, quedás Guía fundador y se te desbloquea el kit completo de fundación. Tu primera sesión, acompañada por videollamada.</p></div>
+    <details class="acordeon"><summary>1 &mdash; CONOCÉ EL MOVIMIENTO<span class="tag">Los pilares, el camino, el equipo: recorré esta página.</span></summary><div class="cuerpo"><p>Recorré esta página: los pilares, el camino, el equipo. Si esto te llama, es para vos.</p></div></details>
+    <details class="acordeon"><summary>2 &mdash; CREÁ TU CUENTA<span class="tag">Quedás como Aspirante, con los documentos de arranque.</span></summary><div class="cuerpo"><p>Registrate en el área de miembros: quedás como Aspirante y se te abren los documentos de arranque para formarte desde el día uno.</p></div></details>
+    <details class="acordeon"><summary>3 &mdash; PRESENTÁ TU SOLICITUD<span class="tag">Tu ciudad, tu lugar, tus primeros nombres y tu por qué.</span></summary><div class="cuerpo"><p>Desde tu panel de miembro, contanos dónde: tu ciudad, el lugar donde se reunirían, cuántos miembros ya tenés en vista y tu por qué. Sin solicitud no hay célula: así, cada célula nace en serio.</p></div></details>
+    <details class="acordeon"><summary>4 &mdash; ENTREVISTA Y DESBLOQUEO<span class="tag">Videollamada con el Fundador; si te designa, kit completo.</span></summary><div class="cuerpo"><p>El Fundador lee tu solicitud y te entrevista por videollamada. Si te designa, firmás el Acta, quedás Guía fundador y se te desbloquea el kit completo de fundación. Tu primera sesión, acompañada por videollamada.</p></div></details>
     <div class="acciones">
       <a class="btn" href="ingresar.html?tab=registro">Crear mi cuenta</a>
       <a class="enlace" href="https://wa.me/59891311418?text=Hola%2C%20quiero%20abrir%20una%20c%C3%A9lula%20de%20LA%20VOZ">o escribinos por WhatsApp</a>
@@ -352,11 +376,9 @@
   <div class="wrap">
     <h2>TU VOZ TIENE PODER</h2>
     <p class="sub">El primer taller es <strong>gratuito y sin compromiso</strong>. Vení, probá una sesión, conocé al movimiento. Si te hace sentido, te quedás.</p>
-    <div class="pillars">
-      <div class="card"><h3>HABLAR EN PÚBLICO</h3><p>Presentaciones, debates e improvisación cada semana, con feedback real: entrenás hasta hablar frente a un grupo con seguridad.</p></div>
-      <div class="card"><h3>LIDERAR CON EL EJEMPLO</h3><p>Coordinás sesiones y acompañás a los nuevos desde adentro: el liderazgo se practica, no se estudia solo.</p></div>
-      <div class="card"><h3>CUERPO FUERTE</h3><p>Entrenamiento físico en grupo, junto a tu célula: disciplina, energía y presencia, cada semana.</p></div>
-    </div>
+    <details class="acordeon"><summary>HABLAR EN PÚBLICO<span class="tag">Presentaciones, debates e improvisación cada semana, con feedback real.</span></summary><div class="cuerpo"><p>Presentaciones, debates e improvisación cada semana, con feedback real: entrenás hasta hablar frente a un grupo con seguridad.</p></div></details>
+    <details class="acordeon"><summary>LIDERAR CON EL EJEMPLO<span class="tag">Coordinás sesiones y acompañás a los nuevos desde adentro.</span></summary><div class="cuerpo"><p>Coordinás sesiones y acompañás a los nuevos desde adentro: el liderazgo se practica, no se estudia solo.</p></div></details>
+    <details class="acordeon"><summary>CUERPO FUERTE<span class="tag">Entrenamiento físico en grupo, junto a tu célula.</span></summary><div class="cuerpo"><p>Entrenamiento físico en grupo, junto a tu célula: disciplina, energía y presencia, cada semana.</p></div></details>
     <div style="text-align:center;margin-top:32px"><a class="enlace" href="https://docs.google.com/forms/d/e/1FAIpQLSfgUKeSpKuz0npDXgJAOf-cOfyzeiMaubLZ_nwHy2I2EFGEtA/viewform">Completar inscripción al taller</a></div>
   </div>
 </section>
